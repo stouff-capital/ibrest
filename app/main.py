@@ -460,7 +460,7 @@ if __name__ == '__main__':
     # When runnning with werkzeug, we already get good logging to stdout, so disabble loggers
     # root.setLevel(logging.ERROR)
     log.debug('Setting up IBREST at {}:{}'.format(host, port))
-    context = ('ibrest.crt', 'ibrest.key')
+    #context = ('ibrest.crt', 'ibrest.key')
 
     # Log to file to since Docker isn't doing it for use
     # Add rotating file log handler
@@ -475,10 +475,10 @@ if __name__ == '__main__':
 
     DEBUG = False
     # For HTTPS with or without debugging
-    app.run(debug=DEBUG, host=host, port=port, ssl_context=context)
+    # app.run(debug=DEBUG, host=host, port=port, ssl_context=context)
     # app.run(debug=DEBUG, host=host, port=port)
 
 
 
     # For HTTP (take note of port)
-    # app.run(debug=False, host=host, port=port,  threaded=True)
+    app.run(debug=False, host=host, port=port, threaded=True)

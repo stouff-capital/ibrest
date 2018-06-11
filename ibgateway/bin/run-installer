@@ -1,0 +1,5 @@
+#!/bin/bash
+socat tcp-listen:4003,reuseaddr,fork tcp:localhost:4002&
+cd /root/Jts/ibgateway/963
+xvfb-daemon-run \
+  ./ibgateway

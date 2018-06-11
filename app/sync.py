@@ -21,9 +21,10 @@ log = logging.getLogger(__name__)
 # ORDER FUNCTIONS
 # ---------------------------------------------------------------------
 def get_open_orders():
-    """ Uses reqAllOpenOrders to get all open orders from 
+    """ Uses reqAllOpenOrders to get all open orders from
     """
-    client = connection.get_client(0)
+    #client = connection.get_client(0)
+    client = connection.get_client()
     if client is None:
         return g.error_resp[-2]
     elif client.isConnected() is False:
@@ -46,7 +47,8 @@ def cancel_order(orderId):
     """
     g.error_resp[orderId] = None  # Reset our error for later
 
-    client = connection.get_client(0)
+    #client = connection.get_client(0)
+    client = connection.get_client()
     if client is None:
         return g.error_resp[-2]
     elif client.isConnected() is False:
@@ -166,7 +168,8 @@ def place_order(order_list):
     comboLegs: a JSON list of details required for this function to fetch the conId to then build the ComboLeg.
     """
     log.debug('Starting place_order with args_list: {}'.format(order_list))
-    client = connection.get_client(0)
+    #client = connection.get_client(0)
+    client = connection.get_client()
     if client is None:
         connection.close_client(client)
         return g.error_resp[-2]
@@ -294,7 +297,8 @@ def place_order_oca(order_list):
     Setting `oca` to True implies
     """
     log.debug('Starting place_order_oca with args_list: {}'.format(order_list))
-    client = connection.get_client(0)
+    #client = connection.get_client(0)
+    client = connection.get_client()
     if client is None:
         connection.close_client(client)
         return g.error_resp[-2]
