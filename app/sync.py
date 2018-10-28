@@ -471,10 +471,11 @@ def get_executions(args):
     filter.m_clientId = 0
     client.reqExecutions(1, filter)
     timeout = g.timeout / 2
+    timeout = g.timeout
     while g.executions_resp['execDetailsEnd'] is False and client.isConnected() is True and timeout > 0:
         # log.debug("Waiting for responses on client {}...".format(client.clientId))
         time.sleep(.25)
         timeout -= 1
-        log.debug('Current executions {}'.format(g.executions_resp))
+        #log.debug('Current executions {}'.format(g.executions_resp))
     connection.close_client(client)
     return g.executions_resp
